@@ -16,12 +16,12 @@ article, aside, canvas, details, embed,
 figure, figcaption, footer, header, hgroup, 
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
+	margin: 50;
+	padding: 50;
+	border: 50;
 	font-size: 100%;
 	font: inherit;
-	vertical-align: baseline;
+	vertical-align: center;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
@@ -29,7 +29,7 @@ footer, header, hgroup, menu, nav, section {
 	display: block;
 }
 body {
-	line-height: 1;
+	line-height: 2;
 }
 ol, ul {
 	list-style: none;
