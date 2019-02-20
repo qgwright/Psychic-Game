@@ -4,13 +4,14 @@
 }
 #container .content {
 		  position: absolute;
-		  top: 0;
+		  top: 50;
 		  left: 50;
+		  right: 50;
 }
 
 
 body { 
-	 background-image: url("../../../assets/css/smoke.bg.mp4");
+	 background-image: url("../../../images/smoke.bg.mp4");
 	font-family: 'Fondamento', Georgia, 'Times New Roman', serif, cursive;
 	align-content: center;      
 	color: rgb(206, 247, 59);      
