@@ -1,83 +1,114 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>The Psychic Game</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to fit=no">   
-    
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="/css/style.css">
-</head>
-<body>
-    <div id="container">
-        <video autoplay loop muted>
-            <source src="images/smoke.bg.mp4" type="smoke.bg/mp4">
-        </video>
-         <div class="col-md-12">
-            <img src="images/Cleo.jpg" class="thumbnail" alt="...">   
-        <div class="content">
-         <div class="col-md-4">  
-    <div id="game">
-        <h1>The Psychic Game</h1>
-        <p>Guess what letter I am thinking of!</p>
-        <p>Total Wins: </p>
-        <p>Total Losses: </p>
-        <p>Guesses Left: </p>
-        <p>Your Guesses so far: </p>
-          <div class="col-md-6">
-         </div>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+      crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- The video -->
+    <video autoplay muted loop id="myVideo">
+      <source src="images/smoke.bg.mp4" type="video/mp4" />
+    </video>
+    <div class="content">
+      <div class="col-md-3">
+        <img src="images/Cleo.jpg" class="thumbnail" alt="..." />
+
+        <div class="col-md-9">
+          <div id="game">
+            <h1>The Psychic Game</h1>
+            <p>Guess what letter I am thinking of!</p>
+            <p>Total Wins:</p>
+            <p>Total Losses:</p>
+            <p>Guesses Left:</p>
+            <p>Your Guesses so far:</p>
+            <div class="col-md-6"></div>
+          </div>
+        </div>
       </div>
     </div>
-</div>
-</div>
-<div class="col-md-4"></div>
-<script type="text/javascript">
-    var wins = 0;
-    var losses = 0;
-    var guessesLeft = 9;
-    var guessesSoFar = []; // array to push user choices to
-    var computerChoices = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']; //list of letters to choose from
-    document.onkeyup = function(event) {
+
+    <script type="text/javascript">
+      var wins = 0;
+      var losses = 0;
+      var guessesLeft = 9;
+      var guessesSoFar = []; // array to push user choices to
+      var computerChoices = [
+        "a",
+        "b",
+        "c",
+        "d",
+        "e",
+        "f",
+        "g",
+        "h",
+        "i",
+        "j",
+        "k",
+        "l",
+        "m",
+        "n",
+        "o",
+        "p",
+        "q",
+        "r",
+        "s",
+        "t",
+        "u",
+        "v",
+        "w",
+        "x",
+        "y",
+        "z"
+      ]; //list of letters to choose from
+      document.onkeyup = function(event) {
         var userGuess = String.fromCharCode(event.keyCode).toLowerCase(); //taking in user guess
-        var computerGuess = computerChoices[Math.floor(Math.random()*computerChoices.length)]; //computer selects random letter
+        var computerGuess =
+          computerChoices[Math.floor(Math.random() * computerChoices.length)]; //computer selects random letter
         guessesSoFar.push(userGuess); //pushing user guess to guesses so far
         if (userGuess == computerGuess) {
-            wins++;
-            alert('Great Job! You\have guesesed corrrectly. You Win!');
-            guessesLeft = 9; //reseting the guesses back to 9 so that the user can play again
-            guessesSoFar.length = 0; //this removes everything from the guesses so far array, so that the guesses from the previous round don't show
+          wins++;
+          alert("Great Job! You\have guesesed corrrectly. You Win!");
+          guessesLeft = 9; //reseting the guesses back to 9 so that the user can play again
+          guessesSoFar.length = 0; //this removes everything from the guesses so far array, so that the guesses from the previous round don't show
+        } else if (guessesLeft == 0) {
+          losses++;
+          alert(
+            "Sorry you didn't guess the correct letter. You lose. Let's try again."
+          );
+          guessesLeft = 9;
+          guessesSoFar.length = 0;
+        } else if (userGuess !== computerGuess) {
+          guessesLeft--; //decrementing the guesses left
         }
-        else if (guessesLeft == 0){
-            losses++;
-            alert('Sorry you didn\'t guess the correct letter. You lose. Let\'s try again.');
-            guessesLeft = 9;
-            guessesSoFar.length = 0;
-        }
-        else if (userGuess !== computerGuess){
-            guessesLeft--; //decrementing the guesses left
-        }  
-        // Taking the tallies and displaying them in HTML    
-        var html = "<h1>The Psychic Game</h1>" + 
-        "<p>Guess what letter I'm thinking of!</p>" +
-        "<p>Total Wins: " + 
-        wins + 
-        "</p>" +
-        "<p>Total Losses: " + 
-        losses + 
-        "</p>" +
-        "<p>Guesses Left: " + 
-        guessesLeft + 
-        "</p>" +
-        "<p>Your Guesses so far: " +
-        guessesSoFar +
-        "</p>"
-        ;
-        // Placing the html into the game ID
-        document.querySelector('#game').innerHTML = html;
-    }
+        // Taking the tallies and displaying them in HTML
+        var html =
+          "<h1>The Psychic Game</h1>" +
+          "<p>Guess what letter I'm thinking of!</p>" +
+          "<p>Total Wins: " +
+          wins +
+          "</p>" +
+          "<p>Total Losses: " +
+          losses +
+          "</p>" +
+          "<p>Guesses Left: " +
+          guessesLeft +
+          "</p>" +
+          "<p>Your Guesses so far: " +
+          guessesSoFar +
+          "</p>";
+        // Placing the html into the game IDgit init
+        document.querySelector("#game").innerHTML = html;
+      };
     </script>
-</body>
+  </body>
 </html>
-
-

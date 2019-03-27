@@ -1,98 +1,21 @@
-#container {
-		 position: relative;
-		 overflow: hidden;
-}
-#container .content {
-		  position: absolute;
-		  top: 50;
-		  left: 50;
-		  right: 50;
+#myVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
 }
 
-
-body { 
-	 background-image: url("../../../images/smoke.bg.mp4");
-	font-family: 'Fondamento', Georgia, 'Times New Roman', serif, cursive;
-	align-content: center;      
-	color: rgb(206, 247, 59);      
-	font-size: 16px;
-	font-weight: bold;
-	text-align:center;
-	vertical-align:center;
-	line-height: 36px;  
-}html {
-	height: 100%;
-	box-sizing: border-box;
-  }
-  
-
-
-  .containter {
-	  width: 100%;
-	  max-width: 950px;
-	  margin: 0 auto;
-  }
-  
-  #space {
-	  margin-top: 15px;
-  }
-  
-  .footer {
-	  right: 0;
-	  left: 0;
-	  bottom: 0;
-		position: absolute;
-	  background: #DBA5DF;
-	  text-align: center;
-	  font-size: 30px;
-	  color: #4A5BD2;
-		padding: 1rem;
-  }
-  
-  /*MEDIA QUERIES*/
-  
-  @media screen and (max-width: 980px){
-	  #psychic-image {
-		  margin-left: 175px;
-	  }
-  
-	  #psychic {
-		  margin-left: 165px;
-	  }
-  
-	  #psychics-image {
-		  margin-right: 180px;
-	  }
-  
-  }
-  
-  
-  @media only screen and (max-width: 768px){
-  
-	  #psychic {
-		  margin-left: 170px;
-	  }
-  
-  }
-  
-  
-  @media only screen and (max-width: 640px){
-  
-	  h2 {
-		  margin-left: 70px;
-	  }
-  
-	  #psychic-image {
-		  margin-left: 150px;
-	  }
-  
-	  #psychic {
-		  margin-left: 145px;
-	  }
-  
-	  #psychics-image {
-		  margin-right: 100px;
-	  }
-  
-  }
-  
+.content {
+  position: fixed;
+  right: 0;
+  text-align: center;
+  top: 0;
+  margin: 0 auto;
+  min-width: 100%;
+  min-height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  color: #f1f1f1;
+  padding: 20px;
+  z-index: 2;
+}
